@@ -4,14 +4,14 @@ const fs = require('fs');
 const path = require('path');
 const querystring = require('querystring');
 
-// Utility function to send a JSON response
+// JSON response
 const sendJSONResponse = (res, statusCode, data) => {
     res.statusCode = statusCode;
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(data, null, 2));
 };
 
-// Middleware to log each incoming request with detailed information
+// Middleware
 const logRequest = (req, res, next) => {
     console.log(`[${new Date().toISOString()}] ${req.method} request for ${req.url}`);
     console.log('Headers:', req.headers);
@@ -29,7 +29,7 @@ const logRequest = (req, res, next) => {
     }
 };
 
-// Middleware to parse JSON and URL-encoded form data
+// Middleware
 const parseBody = (req, res, next) => {
     if (req.method === 'POST') {
         let body = '';
@@ -53,7 +53,7 @@ const parseBody = (req, res, next) => {
     }
 };
 
-// Middleware to handle static file serving
+// Middleware
 const serveStatic = (req, res, next) => {
     const parsedUrl = url.parse(req.url);
     let pathname = `./public${parsedUrl.pathname}`;
