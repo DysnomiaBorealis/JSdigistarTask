@@ -97,7 +97,7 @@ const serveStatic = (req, res, next) => {
     });
 };
 
-// Error handler for unsupported routes or methods
+// Error handler
 const handleError = (res, statusCode, message) => {
     res.statusCode = statusCode;
     res.setHeader('Content-Type', 'text/html');
